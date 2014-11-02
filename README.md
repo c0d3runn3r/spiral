@@ -1,9 +1,8 @@
-== Spiral
+## Spiral
 
 
 Make spirals
 
-
-=== Prerequisites
+### Prerequisites
 * PHP with GD
 * PHPUnit (to run tests)
