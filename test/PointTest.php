@@ -19,19 +19,47 @@ class PointTest extends PHPUnit_Framework_TestCase {
 		$p->set_polar(sqrt(2),pi()/4);
 		$this->assertLessThanOrEqual(.000001, abs(1 - $p->x));
 		$this->assertLessThanOrEqual(.000001, abs(1 - $p->y));
+
+		// Same thing, IV quadrant
+		$p=new Point();
+		$p->set_polar(sqrt(2),(2*pi()) + 3*pi()/4);
+		$this->assertLessThanOrEqual(.000001, abs(-1 - $p->x));
+		$this->assertLessThanOrEqual(.000001, abs(1 - $p->y));
+
+
 	}
 
 	public function testToPolar() {
 
 		// Test polar input, using the pythagorean theorem
 		$p=new Point();
-		$p->set_polar(2,pi()/4);
 
-		// Convert back to polar
+		// Set and convert back to polar: I
+		$p->set_polar(2,pi()/4);
 		$polar=$p->get_polar();
 		$this->assertLessThanOrEqual(.000001, abs( 2 - $polar[0]));
 		$this->assertLessThanOrEqual(.000001, abs( pi()/4 - $polar[1]));
+
+		// IV
+		$p->set_polar(2,3*pi()/4);
+		$polar=$p->get_polar();
+		$this->assertLessThanOrEqual(.000001, abs( 2 - $polar[0]));
+		$this->assertLessThanOrEqual(.000001, abs( 3*pi()/4 - $polar[1]));
+
+		// II
+		$p->set_polar(2,7*pi()/4);
+		$polar=$p->get_polar();
+		$this->assertLessThanOrEqual(.000001, abs( 2 - $polar[0]));
+		$this->assertLessThanOrEqual(.000001, abs( 7*pi()/4 - $polar[1]));
+
+		// III
+		$p->set_polar(2,5*pi()/4);
+		$polar=$p->get_polar();
+		$this->assertLessThanOrEqual(.000001, abs( 2 - $polar[0]));
+		$this->assertLessThanOrEqual(.000001, abs( 5*pi()/4 - $polar[1]));
+
 	}
+
 
 	/**
 	 * @expectedException InvalidArgumentException

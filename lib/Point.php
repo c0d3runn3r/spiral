@@ -52,6 +52,12 @@ class Point {
 		$rho=sqrt($this->x*$this->x + $this->y*$this->y);
 		$theta=atan2($this->y, $this->x);
 
+		// atan2 returns negative values for input in the II, III quadrants
+		if($theta < 0){
+
+			$theta+=(2*pi());
+		}
+
 		return array($rho, $theta);
 	}
 

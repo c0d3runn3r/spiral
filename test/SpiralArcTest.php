@@ -25,6 +25,15 @@ class SpiralArcTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * @expectedException InvalidArgumentException
 	 */
+	public function testThetaOver2PI (){
+
+		$s=new SpiralArc(NULL, 2*pi(), 2*pi()+1, 5, 5);
+
+	}
+
+	/**
+	 * @expectedException InvalidArgumentException
+	 */
 	public function testArcAcrossI_IIQuadrants (){
 
 		$s=new SpiralArc(NULL, 0.25*pi(), 0.75*pi(), 5, 5);
